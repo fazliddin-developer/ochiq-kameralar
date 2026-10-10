@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OchiqKamera UZ</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+
+<header class="header">
+    <h2>📹 OCHIQ<span>KAMERA</span></h2>
+    <p>O‘zbekiston ochiq kameralar xaritasi</p>
+</header>
+
+<main class="container">
+    <section class="hero">
+        <h1>O‘zbekiston kameralar xaritasi</h1>
+        <p>Shaharni tanlang va ochiq kamera manbalarini qidiring.</p>
+    </section>
+
+    <section class="controls">
+        <input id="searchInput"
+               type="text"
+               placeholder="Shahar nomini yozing...">
+
+        <select id="regionFilter">
+            <option value="all">Barcha hududlar</option>
+            <option value="Toshkent">Toshkent</option>
+            <option value="Samarqand">Samarqand</option>
+            <option value="Buxoro">Buxoro</option>
+            <option value="Farg‘ona">Farg‘ona</option>
+            <option value="Andijon">Andijon</option>
+            <option value="Namangan">Namangan</option>
+            <option value="Nukus">Nukus</option>
+            <option value="Navoiy">Navoiy</option>
+            <option value="Qarshi">Qarshi</option>
+            <option value="Termiz">Termiz</option>
+            <option value="Xiva">Xiva</option>
+            <option value="Jizzax">Jizzax</option>
+            <option value="Guliston">Guliston</option>
+        </select>
+    </section>
+
+    <section class="dashboard">
+        <div class="map-box">
+            <h2>🗺️ Interaktiv xarita</h2>
+            <div id="map"></div>
+            <p class="hint">
+                Belgilar shahar markazlarini ko‘rsatadi,
+                tasdiqlangan kamera joylarini emas.
+            </p>
+        </div>
+
+        <div class="city-box">
+            <h2>📍 Shaharlar</h2>
+            <div id="cityList"></div>
+        </div>
+    </section>
+
+    <section class="sources">
+        <h2>🌐 Ochiq kamera manbalari</h2>
+
+        <a href="https://www.windy.com/-Webcams/webcams"
+           target="_blank" rel="noopener noreferrer">
+            Windy Webcams ↗
+        </a>
+
+        <a href="https://www.skylinewebcams.com/"
+           target="_blank" rel="noopener noreferrer">
+            SkylineWebcams ↗
+        </a>
+
+        <a href="https://www.earthcam.com/"
+           target="_blank" rel="noopener noreferrer">
+            EarthCam ↗
+        </a>
+    </section>
+
+    <p class="disclaimer">
+        Faqat ommaviy yoki foydalanishga ruxsat berilgan
+        kamera manbalaridan foydalaning.
+    </p>
+</main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

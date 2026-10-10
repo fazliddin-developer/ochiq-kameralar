@@ -1,0 +1,599 @@
+
+/* ==============================
+   OCHIQ KAMERALAR — UZBEKISTON
+   KOMPYUTER + TELEFON VERSIYASI
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #080d18;
+    --bg-light: #101827;
+    --card: #111c2d;
+    --border: #24344b;
+    --text: #f1f5f9;
+    --muted: #9aa9bd;
+    --primary: #38bdf8;
+    --primary-hover: #0ea5e9;
+    --green: #22c55e;
+}
+
+html {
+    scroll-behavior: smooth;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* BARCHA RASMLAR */
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* LINKLAR */
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+a:hover {
+    color: #7dd3fc;
+}
+
+/* ASOSIY KONTEYNER */
+
+.container,
+.wrapper {
+    width: min(1200px, 92%);
+    margin: 0 auto;
+}
+
+/* HEADER */
+
+header {
+    width: 100%;
+    padding: 18px 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    background: #0b1322;
+    border-bottom: 1px solid var(--border);
+}
+
+header h1,
+header .logo {
+    color: var(--primary);
+    font-size: 24px;
+    font-weight: 800;
+}
+
+/* NAVIGATSIYA */
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+nav a {
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+/* ASOSIY QISM */
+
+main,
+section {
+    max-width: 100%;
+}
+
+.hero {
+    padding: 45px 0 30px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.2;
+    margin-bottom: 15px;
+    overflow-wrap: anywhere;
+}
+
+.hero p {
+    max-width: 750px;
+    margin: 0 auto 20px;
+    color: var(--muted);
+}
+
+/* SARLAVHALAR */
+
+h2 {
+    font-size: 28px;
+    line-height: 1.3;
+    margin-bottom: 18px;
+}
+
+h3 {
+    font-size: 20px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+p {
+    overflow-wrap: anywhere;
+}
+
+/* QIDIRUV VA FILTRLAR */
+
+.controls,
+.search-box,
+.filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+    margin: 20px auto;
+}
+
+input,
+select,
+textarea {
+    background: var(--bg-light);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 13px 15px;
+    font-size: 15px;
+    outline: none;
+    max-width: 100%;
+    min-width: 0;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px #38bdf825;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--muted);
+}
+
+.controls input,
+.search-box input,
+.filters input {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* TUGMALAR */
+
+button,
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    background: var(--primary);
+    color: #06111e;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+button:hover,
+.btn:hover {
+    background: var(--primary-hover);
+    color: #fff;
+}
+
+button:active,
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* XARITA */
+
+#map {
+    width: 100%;
+    height: 520px;
+    min-height: 300px;
+    margin: 20px auto 35px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    background: #162235;
+    z-index: 1;
+}
+
+.leaflet-container {
+    width: 100%;
+    max-width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    background: #111c2d;
+    color: var(--text);
+}
+
+.leaflet-popup-content {
+    overflow-wrap: anywhere;
+    max-width: 240px;
+}
+
+.leaflet-popup-content a {
+    color: var(--primary);
+}
+
+/* KARTALAR */
+
+.cards,
+.camera-grid,
+.cities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin: 25px 0;
+}
+
+.card {
+    min-width: 0;
+    padding: 22px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+    border-color: var(--primary);
+    transform: translateY(-3px);
+}
+
+.card h3 {
+    color: var(--text);
+}
+
+.card p {
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+
+.card a {
+    overflow-wrap: anywhere;
+}
+
+/* BO‘LIMLAR */
+
+section:not(.hero) {
+    padding-top: 20px;
+    padding-bottom: 25px;
+}
+
+.section-title {
+    margin-bottom: 10px;
+}
+
+.description {
+    color: var(--muted);
+    margin-bottom: 18px;
+}
+
+/* RO‘YXAT */
+
+ul,
+ol {
+    padding-left: 22px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* FOOTER */
+
+footer {
+    width: 100%;
+    margin-top: 35px;
+    padding: 28px 4%;
+    background: #0b1322;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--muted);
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* ==============================
+   PLANSHEТ
+============================== */
+
+@media (max-width: 900px) {
+    header {
+        padding: 16px 4%;
+    }
+
+    header h1,
+    header .logo {
+        font-size: 22px;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    .cards,
+    .camera-grid,
+    .cities-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
+    }
+
+    #map {
+        height: 450px;
+    }
+}
+
+/* ==============================
+   TELEFON
+============================== */
+
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .container,
+    .wrapper {
+        width: 92%;
+    }
+
+    /* HEADER */
+
+    header {
+        padding: 14px 4%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    header h1,
+    header .logo {
+        font-size: 21px;
+        line-height: 1.3;
+    }
+
+    /* TELEFONDA MENYU */
+
+    nav {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 8px;
+    }
+
+    nav a {
+        display: inline-block;
+        padding: 7px 10px;
+        background: var(--bg-light);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-size: 13px;
+    }
+
+    /* BOSH SAHIFA */
+
+    .hero {
+        padding: 30px 0 18px;
+        text-align: left;
+    }
+
+    .hero h1 {
+        font-size: clamp(25px, 7vw, 34px);
+        margin-bottom: 12px;
+    }
+
+    .hero p {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        font-size: 23px;
+        margin-bottom: 14px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    /* QIDIRUV */
+
+    .controls,
+    .search-box,
+    .filters {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        margin: 16px auto;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        min-width: 0;
+        padding: 13px 12px;
+        font-size: 16px;
+    }
+
+    .controls input,
+    .search-box input,
+    .filters input {
+        width: 100%;
+        min-width: 0;
+    }
+
+    button,
+    .btn {
+        width: 100%;
+        min-height: 44px;
+        padding: 12px 14px;
+        font-size: 15px;
+    }
+
+    /* XARITA */
+
+    #map {
+        width: 100%;
+        height: 55vh;
+        min-height: 300px;
+        max-height: 480px;
+        margin: 16px auto 25px;
+        border-radius: 12px;
+    }
+
+    .leaflet-popup-content {
+        max-width: 190px;
+        font-size: 13px;
+    }
+
+    /* KARTALAR */
+
+    .cards,
+    .camera-grid,
+    .cities-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 13px;
+        margin: 18px 0;
+    }
+
+    .card {
+        width: 100%;
+        padding: 17px;
+        border-radius: 12px;
+    }
+
+    .card:hover {
+        transform: none;
+    }
+
+    /* BO‘LIMLAR */
+
+    section:not(.hero) {
+        padding-top: 15px;
+        padding-bottom: 18px;
+    }
+
+    ul,
+    ol {
+        padding-left: 20px;
+    }
+
+    /* FOOTER */
+
+    footer {
+        margin-top: 20px;
+        padding: 22px 5%;
+        font-size: 13px;
+        overflow-wrap: anywhere;
+    }
+}
+
+/* ==============================
+   KICHIK TELEFONLAR
+============================== */
+
+@media (max-width: 380px) {
+    .container,
+    .wrapper {
+        width: 94%;
+    }
+
+    header h1,
+    header .logo {
+        font-size: 19px;
+    }
+
+    nav {
+        gap: 6px;
+    }
+
+    nav a {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+
+    .hero h1 {
+        font-size: 25px;
+    }
+
+    h2 {
+        font-size: 21px;
+    }
+
+    .card {
+        padding: 14px;
+    }
+
+    #map {
+        height: 45vh;
+        min-height: 270px;
+    }
+}
+
+/* HAR QANDAY EKRANDA TASHQARIGA CHIQIB KETMASIN */
+
+input,
+select,
+textarea,
+button,
+.card,
+#map {
+    max-width: 100%;
+}
+
+iframe {
+    max-width: 100%;
+}
